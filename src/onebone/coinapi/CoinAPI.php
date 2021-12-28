@@ -27,9 +27,9 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\utils\Config;
 use pocketmine\utils\Utils;
 use pocketmine\utils\TextFormat;
-use onebone\coinapi\provider\Provider;
-use onebone\coinapi\provider\YamlProvider;
-use onebone\coinapi\provider\MySQLProvider;
+use onebone\CoinAPI\provider\Provider;
+use onebone\CoinAPI\provider\YamlProvider;
+use onebone\CoinAPI\provider\MySQLProvider;
 use onebone\coinapi\event\coin\SetCoinEvent;
 use onebone\coinapi\event\coin\ReduceCoinEvent;
 use onebone\coinapi\event\coin\AddCoinEvent;
@@ -50,7 +50,7 @@ class CoinAPI extends PluginBase implements Listener{
     private static $instance = null;
 
     /** @var Provider */
-    private $provider;
+    private Provinder $provider;
 
     private array $langList = [
         "vie" => "Tieng Viet",
@@ -70,14 +70,9 @@ class CoinAPI extends PluginBase implements Listener{
         "uk" => "Українська",
         "zh" => "繁體中文",
     ];
-    private $lang = [], $playerLang = [];
+    private array $lang = [], $playerLang = [];
 
-    /**
-     * @param string            $command
-     * @param string|bool        $lang
-     *
-     * @return array
-     */
+    
     public function getCommandMessage(string $command, $lang = false) : array{
         if($lang === false){
         }

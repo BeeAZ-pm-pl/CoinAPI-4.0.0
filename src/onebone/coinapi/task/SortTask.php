@@ -89,7 +89,7 @@ class SortTask extends AsyncTask{
             if($this->sender === "CONSOLE"){
                 $plugin->getLogger()->info($output);
             }else{
-                $sender->sendMessage($output);
+                $player->sendMessage($output);
             }
         }
     }
