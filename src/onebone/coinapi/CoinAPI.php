@@ -27,10 +27,9 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\utils\Config;
 use pocketmine\utils\Utils;
 use pocketmine\utils\TextFormat;
-
-use onebone\coinapi\provider\Provider;
-use onebone\coinapi\provider\YamlProvider;
-use onebone\coinapi\provider\MySQLProvider;
+use onebone\CoinAPI\provider\Provider;
+use onebone\CoinAPI\provider\YamlProvider;
+use onebone\CoinAPI\provider\MySQLProvider;
 use onebone\coinapi\event\coin\SetCoinEvent;
 use onebone\coinapi\event\coin\ReduceCoinEvent;
 use onebone\coinapi\event\coin\AddCoinEvent;
@@ -54,7 +53,7 @@ class CoinAPI extends PluginBase implements Listener{
     private $provider;
 
     private $langList = [
-        "vie" => "Tiếng Việt",
+        "vie" => "Tieng Viet",
         "def" => "Default",
         "user-define" => "User Defined",
         "ch" => "简体中文",
@@ -127,14 +126,6 @@ class CoinAPI extends PluginBase implements Listener{
     public function getAllCoin() : array{
         return $this->provider->getAll();
     }
-
-    /**
-     * @param string|Player        $player
-     * @param float                $defaultPoint
-     * @param bool                $force
-     *
-     * @return bool
-     */
     public function createAccount($player, $defaultCoin = false, bool $force = false) : bool{
         if($player instanceof Player){
             $player = $player->getName();

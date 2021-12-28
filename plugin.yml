@@ -1,0 +1,43 @@
+---
+name: CoinAPI
+main: onebone\coinapi\CoinAPI
+api:
+- 4.0.0
+version: 3.0.1
+author: onebone 
+authors: BeeAZ
+permissions:
+  coinapi.*:
+    default: op
+    description: Allows to control all of functions in CoinAPI
+  coinapi.command.*:
+    default: op
+    description: Allows to use all of commands in CoinAPI
+  coinapi.command.setcoin:
+    default: op
+    description: Allows to set player's coin
+  coinapi.command.mycoin:
+    description: Allows player to see his/her coin
+    default: true
+  coinapi.command.givecoin:
+    description: Allows player to give coin to others
+    default: op
+  coinapi.command.paycoin:
+    description: Allows player to pay to someone
+    default: true
+  coinapi.command.seecoin:
+    description: Allows player to see others' coin
+    default: true
+  coinapi.command.setlangcoin:
+    description: Allows player to set his/her language
+    default: op
+  coinapi.command.topcoin:
+    description: Allows player to see top coin list
+    default: true
+  coinapi.command.mystatuscoin:
+    description: Allows player to see his/her financial status
+    default: op
+  coinapi.command.takecoin:
+    description: Allows player to take coin from others
+    default: op
+...
