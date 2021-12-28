@@ -27,9 +27,9 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\utils\Config;
 use pocketmine\utils\Utils;
 use pocketmine\utils\TextFormat;
-use onebone\CoinAPI\provider\Provider;
-use onebone\CoinAPI\provider\YamlProvider;
-use onebone\CoinAPI\provider\MySQLProvider;
+use onebone\coinapi\provider\Provider;
+use onebone\coinapi\provider\YamlProvider;
+use onebone\coinapi\provider\MySQLProvider;
 use onebone\coinapi\event\coin\SetCoinEvent;
 use onebone\coinapi\event\coin\ReduceCoinEvent;
 use onebone\coinapi\event\coin\AddCoinEvent;
@@ -52,7 +52,7 @@ class CoinAPI extends PluginBase implements Listener{
     /** @var Provider */
     private $provider;
 
-    private $langList = [
+    private array $langList = [
         "vie" => "Tieng Viet",
         "def" => "Default",
         "user-define" => "User Defined",

@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace onebone\coinapi\provider;
+namespace onebone\CoinAPI\provider;
 
 
 use onebone\coinapi\CoinAPI;
