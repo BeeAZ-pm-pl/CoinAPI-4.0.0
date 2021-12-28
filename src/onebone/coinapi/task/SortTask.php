@@ -27,13 +27,20 @@ use pocketmine\player\Player;
 use onebone\coinapi\CoinAPI;
 
 class SortTask extends AsyncTask{
-    private $sender, $coinData, $addOp, $page, $ops, $banList;
+    private $sender, $rebirthcoinData, $addOp, $page, $ops, $banList;
 
     private $max = 0;
 
     private $topList;
 
- 
+    /**
+     * @param string            $player
+     * @param array                $pointData
+     * @param bool                $addOp
+     * @param int                $page
+     * @param array                $ops
+     * @param array                $banList
+     */
     public function __construct(string $sender, array $coinData, bool $addOp, int $page, array $ops, array $banList){
         $this->sender = $sender;
         $this->coinData = $coinData;

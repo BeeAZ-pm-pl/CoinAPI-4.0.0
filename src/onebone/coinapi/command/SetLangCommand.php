@@ -3,7 +3,7 @@
 namespace onebone\coinapi\command;
 
 use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
+use pocketmine\Command\CommandSender;
 use pocketmine\utils\TextFormat;
 
 use onebone\coinapi\CoinAPI;

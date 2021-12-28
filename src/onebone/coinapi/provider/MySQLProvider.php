@@ -18,7 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace onebone\CoinAPI\provider;
+namespace onebone\coinapi\provider;
 
 
 use onebone\coinapi\CoinAPI;
@@ -63,7 +63,10 @@ class MySQLProvider implements Provider{
         $this->plugin->getScheduler()->scheduleRepeatingTask(new MySQLPingTask($this->plugin, $this->db), 600);
     }
 
-
+    /**
+     * @param \pocketmine\Player|string $player
+     * @return bool
+     */
     public function accountExists($player){
         if($player instanceof Player){
             $player = $player->getName();
@@ -74,7 +77,11 @@ class MySQLProvider implements Provider{
         return $result->num_rows > 0 ? true:false;
     }
 
-    
+    /**
+     * @param \pocketmine\Player|string $player
+     * @param float $defaultPoint
+     * @return bool
+     */
     public function createAccount($player, $defaultCoin = 1000.0){
         if($player instanceof Player){
             $player = $player->getName();
@@ -88,7 +95,10 @@ class MySQLProvider implements Provider{
         return false;
     }
 
-    
+    /**
+     * @param \pocketmine\Player|string $player
+     * @return bool
+     */
     public function removeAccount($player){
         if($player instanceof Player){
             $player = $player->getName();
@@ -99,6 +109,10 @@ class MySQLProvider implements Provider{
         return false;
     }
 
+    /**
+     * @param string $player
+     * @return float|bool
+     */
     public function getCoin($player){
         if($player instanceof Player){
             $player = $player->getName();
@@ -111,7 +125,11 @@ class MySQLProvider implements Provider{
         return $ret;
     }
 
-    
+    /**
+     * @param \pocketmine\Player|string $player
+     * @param float $amount
+     * @return bool
+     */
     public function setCoin($player, $amount){
         if($player instanceof Player){
             $player = $player->getName();
@@ -123,7 +141,11 @@ class MySQLProvider implements Provider{
         return $this->db->query("UPDATE user_coin SET coin = $amount WHERE username='".$this->db->real_escape_string($player)."'");
     }
 
-
+    /**
+     * @param \pocketmine\Player|string $player
+     * @param float $amount
+     * @return bool
+     */
     public function addCoin($player, $amount){
         if($player instanceof Player){
             $player = $player->getName();
@@ -135,7 +157,11 @@ class MySQLProvider implements Provider{
         return $this->db->query("UPDATE user_coin SET coin = coin + $amount WHERE username='".$this->db->real_escape_string($player)."'");
     }
 
-    
+    /**
+     * @param \pocketmine\Player|string $player
+     * @param float $amount
+     * @return bool
+     */
     public function reduceCoin($player, $amount){
         if($player instanceof Player){
             $player = $player->getName();
@@ -147,7 +173,9 @@ class MySQLProvider implements Provider{
         return $this->db->query("UPDATE user_coin SET coin = coin - $amount WHERE username='".$this->db->real_escape_string($player)."'");
     }
 
-    
+    /**
+     * @return array
+     */
     public function getAll(){
         $res = $this->db->query("SELECT * FROM user_coin");
 
@@ -161,7 +189,9 @@ class MySQLProvider implements Provider{
         return $ret;
     }
 
-   
+    /**
+     * @return string
+     */
     public function getName(){
         return "MySQL";
     }

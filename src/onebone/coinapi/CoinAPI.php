@@ -27,9 +27,10 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\utils\Config;
 use pocketmine\utils\Utils;
 use pocketmine\utils\TextFormat;
-use onebone\CoinAPI\provider\Provider;
-use onebone\CoinAPI\provider\YamlProvider;
-use onebone\CoinAPI\provider\MySQLProvider;
+
+use onebone\coinapi\provider\Provider;
+use onebone\coinapi\provider\YamlProvider;
+use onebone\coinapi\provider\MySQLProvider;
 use onebone\coinapi\event\coin\SetCoinEvent;
 use onebone\coinapi\event\coin\ReduceCoinEvent;
 use onebone\coinapi\event\coin\AddCoinEvent;
@@ -50,10 +51,10 @@ class CoinAPI extends PluginBase implements Listener{
     private static $instance = null;
 
     /** @var Provider */
-    private Provinder $provider;
+    private $provider;
 
-    private array $langList = [
-        "vie" => "Tieng Viet",
+    private $langList = [
+        "vie" => "Tiếng Việt",
         "def" => "Default",
         "user-define" => "User Defined",
         "ch" => "简体中文",
@@ -70,9 +71,14 @@ class CoinAPI extends PluginBase implements Listener{
         "uk" => "Українська",
         "zh" => "繁體中文",
     ];
-    private array $lang = [], $playerLang = [];
+    private $lang = [], $playerLang = [];
 
-    
+    /**
+     * @param string            $command
+     * @param string|bool        $lang
+     *
+     * @return array
+     */
     public function getCommandMessage(string $command, $lang = false) : array{
         if($lang === false){
         }
@@ -121,6 +127,14 @@ class CoinAPI extends PluginBase implements Listener{
     public function getAllCoin() : array{
         return $this->provider->getAll();
     }
+
+    /**
+     * @param string|Player        $player
+     * @param float                $defaultPoint
+     * @param bool                $force
+     *
+     * @return bool
+     */
     public function createAccount($player, $defaultCoin = false, bool $force = false) : bool{
         if($player instanceof Player){
             $player = $player->getName();
