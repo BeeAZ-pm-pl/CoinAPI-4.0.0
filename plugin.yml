@@ -4,7 +4,7 @@ main: onebone\coinapi\CoinAPI
 api:
 - 4.0.0
 version: 3.0.1
-author: onebone
+author: onebone , BeeAZZ
 permissions:
   coinapi.*:
     default: op
