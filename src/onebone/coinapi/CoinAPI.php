@@ -374,9 +374,9 @@ class CoinAPI extends PluginBase implements Listener{
             case "yaml":
             $this->provider = new YamlProvider($this);
             break;
-            case "mysql":
+           /* case "mysql":
             $this->provider = new MySQLProvider($this);
-            break;
+            break;*/
             default:
             $this->getLogger()->critical("Invalid database was given.");
             return false;
