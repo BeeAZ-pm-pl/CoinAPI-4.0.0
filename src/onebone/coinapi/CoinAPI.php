@@ -27,7 +27,6 @@ use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\utils\Config;
 use pocketmine\utils\Utils;
 use pocketmine\utils\TextFormat;
-
 use onebone\coinapi\provider\Provider;
 use onebone\coinapi\provider\YamlProvider;
 use onebone\coinapi\provider\MySQLProvider;
@@ -374,9 +373,9 @@ class CoinAPI extends PluginBase implements Listener{
             case "yaml":
             $this->provider = new YamlProvider($this);
             break;
-           /* case "mysql":
+            case "mysql":
             $this->provider = new MySQLProvider($this);
-            break;*/
+            break;
             default:
             $this->getLogger()->critical("Invalid database was given.");
             return false;
